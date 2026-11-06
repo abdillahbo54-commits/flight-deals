@@ -93,15 +93,22 @@ don't say uses the default.
 
 | You want | Write for example | Default |
 |---|---|---|
-| Travellers | "2 adults", "à deux", "2 adults + 1 child (6)", "with a baby" | 1 adult |
-| Trip type | "one way", "aller simple" / "round trip" | round trip |
+| Travellers and ages | "2 adults", "à deux", "2 adults + children of 5 and 9", "a baby of 10 months", "a teen of 15" | 1 adult |
+| Trip type | "one way", "aller simple" / "round trip" / "back from Marrakech" (open-jaw) | round trip |
+| Stops | "direct only", "max 1 stop", "layover under 3 h", "no overnight layover" | any |
+| Stopover | "2-day stopover in Istanbul" / "no stopover" | none |
 | Dates | "in December" (flexible ±3 days) or "18 to 28 December" (exact) | flexible |
 | Baggage | "with a 23 kg bag", "valise en soute" | not included |
-| Stops | "direct only", "sans escale" | any |
 | Cabin | "business", "premium economy" | economy |
 
-Example: *"vol Paris Marrakech aller simple le 12 avril, 2 adultes et 1
-enfant, avec bagage"*.
+Examples:
+- *"vol Paris Marrakech aller simple le 12 avril, 2 adultes et 1 enfant de 6
+  ans, avec bagage"*
+- *"Paris to Bangkok in March, max 1 stop, no overnight layover"*
+- *"Casablanca Montréal en juillet avec un stopover de 2 jours à Lisbonne"*
+
+If a filter leaves no flight, the skill says so and shows the closest
+options (e.g. "no direct flight; best with 1 stop").
 
 Forgot something? After the results, just reply "à deux, aller simple": the
 search runs again with the new settings. Prices shown are always the total

@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.2.0 — 2026-11-06
+
+### Added
+- Ages of travellers (children, infants, teens, seniors), passed to tools
+  that accept them.
+- Stop filters: direct only, max 1 stop, max layover time, no overnight
+  layover, no airport change. Empty results explained, closest options shown.
+- Stopover: a planned stay in a city on the way, searched as multi-city.
+- Settings line and READMEs list these options.
+
 ## 1.1.0 — 2026-11-06
 
 ### Added

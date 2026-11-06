@@ -96,15 +96,22 @@ vous ne précisez pas prend la valeur par défaut.
 
 | Vous voulez | Écrivez par exemple | Par défaut |
 |---|---|---|
-| Voyageurs | « 2 adultes », « à deux », « 2 adultes + 1 enfant (6 ans) », « avec un bébé » | 1 adulte |
-| Type de trajet | « aller simple » / « aller-retour » | aller-retour |
+| Voyageurs et âges | « 2 adultes », « à deux », « 2 adultes + enfants de 5 et 9 ans », « un bébé de 10 mois », « un ado de 15 ans » | 1 adulte |
+| Type de trajet | « aller simple » / « aller-retour » / « retour depuis Marrakech » | aller-retour |
+| Escales | « direct uniquement », « 1 escale max », « escale de moins de 3 h », « pas d'escale de nuit » | toutes |
+| Stopover | « stopover de 2 jours à Istanbul » / « pas de stopover » | aucun |
 | Dates | « en décembre » (souple ±3 jours) ou « du 18 au 28 décembre » (exactes) | souples |
 | Bagage | « avec une valise de 23 kg », « bagage en soute » | non inclus |
-| Escales | « direct uniquement », « sans escale » | toutes |
 | Classe | « business », « premium » | économie |
 
-Exemple : *« vol Paris Marrakech aller simple le 12 avril, 2 adultes et 1
-enfant, avec bagage »*.
+Exemples :
+- *« vol Paris Marrakech aller simple le 12 avril, 2 adultes et 1 enfant de
+  6 ans, avec bagage »*
+- *« Paris Bangkok en mars, 1 escale max, pas d'escale de nuit »*
+- *« Casablanca Montréal en juillet avec un stopover de 2 jours à Lisbonne »*
+
+Si un filtre ne laisse aucun vol, le skill le dit et propose les options les
+plus proches (ex. « pas de vol direct ; le meilleur avec 1 escale »).
 
 Un oubli ? Après les résultats, répondez simplement « à deux, aller simple » :
 la recherche est relancée avec les nouveaux réglages. Les prix affichés sont

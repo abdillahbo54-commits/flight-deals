@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Searches every available flight connector, optionally Google Flights in the browser, groups duplicate fares, shows a compact top-5 table, never invents a price and never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.1)
+# Flight Deals — find the best flights (v1.2)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -41,20 +41,44 @@ any order, for example:
 
 | The user writes | Meaning |
 |---|---|
+| **Travellers and ages** | |
 | "2 adultes", "2 adults", "à deux", "en couple" | 2 adults |
-| "avec 2 enfants (5 et 9 ans)", "2 kids" | + 2 children (ages matter: ask only if a tool requires them) |
-| "avec un bébé", "infant" | + 1 infant on lap |
-| "en famille" | unclear count: search 2 adults, say so, and ask the count after the results |
+| "avec 2 enfants de 5 et 9 ans", "2 kids (5, 9)" | + 2 children, ages 5 and 9 |
+| "avec un bébé de 10 mois", "infant" | + 1 infant (under 2, on lap unless "own seat") |
+| "un ado de 14 ans", "teen 15" | 12–17: usually priced as adult; pass the age if the tool accepts it |
+| "senior", "65 ans" | adult (pass the age if the tool has a senior type) |
+| "en famille" | unclear count: search 2 adults, say so, ask the count after the results |
+| **Trip type** | |
 | "aller simple", "one way", "sans retour" | one way |
-| "aller-retour", "return" | round trip |
-| "du 18 au 28 décembre", "18/12 → 28/12" | exact dates, no ±3 days |
+| "aller-retour", "return" | round trip (default) |
 | "retour depuis Marrakech", "open jaw" | open-jaw (return from another city) |
+| **Stops** | |
+| "direct", "sans escale", "non-stop" | non-stop only |
+| "1 escale max", "max one stop" | at most 1 stop |
+| "escale OK", "peu importe" | any number of stops (default) |
+| "escale de moins de 3 h", "short layover" | max layover duration |
+| "pas d'escale de nuit", "no overnight layover" | exclude overnight layovers |
+| "pas de changement d'aéroport" | exclude airport changes |
+| **Stopover** (a planned stay of 1+ days in a city on the way) | |
+| "stopover 2 jours à Istanbul", "arrêt à Lisbonne" | search as multi-city: origin → stopover city, then → destination (+ return); show the total |
+| "pas de stopover" | no planned stay (default); long layovers are still flagged |
+| **Other** | |
+| "du 18 au 28 décembre", "18/12 → 28/12" | exact dates, no ±3 days |
 | "business", "premium" | cabin |
 | "avec bagage", "23 kg", "valise en soute" | checked bag needed: add bag cost to the total |
-| "direct", "sans escale" | non-stop only |
+
 
 Prices are always the **total for all passengers**: say "total for 2
 adults" in the header line.
+
+Apply the filters to the results, not by guessing: if a tool has a filter
+parameter (stops, cabin, passenger ages), use it; otherwise filter the rows it
+returned and say how many were removed. If a filter leaves no result, say so
+and show the closest options (e.g. "no direct flight; best with 1 stop").
+
+Stopover: some airlines run stopover programmes (a free or cheap stay in their
+hub). Mention it only as something to check on the airline's site; never
+claim a programme or price you did not see in a tool.
 
 After the results, ask **at most one** clarifying question, the one most
 likely to change the ranking (usually: "Exact dates, or a checked bag?").
@@ -107,8 +131,9 @@ per pick (cheapest / fastest / best balance, with the reason), the search
 time, and "fares move quickly". Then add one short **settings line** so a beginner knows what can
 be changed, in the user's language, e.g.:
 
-> Change: travellers (e.g. "2 adults + 1 child") · one way · exact dates ·
-> checked bag · direct only · full list
+> Change: travellers and ages (e.g. "2 adults + 1 child of 6") · one way /
+> round trip · stops (direct / 1 max / no overnight) · stopover (e.g.
+> "2 days in Istanbul") · exact dates · checked bag · full list
 
 The user can answer in plain words ("à deux, aller simple"): re-run the
 search with the new settings, no further questions.
