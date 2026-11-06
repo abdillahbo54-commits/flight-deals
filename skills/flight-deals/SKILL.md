@@ -1,6 +1,6 @@
 ---
 name: flight-deals
-description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill: queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
+description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill. Queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
 ---
 
 # Flight Deals — find the best flights (v1.6)
