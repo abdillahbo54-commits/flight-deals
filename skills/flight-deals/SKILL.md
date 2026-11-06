@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Searches every available flight connector, optionally Google Flights in the browser, groups duplicate fares, shows a compact top-5 table, never invents a price and never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.5)
+# Flight Deals — find the best flights (v1.6)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -102,19 +102,16 @@ Check silently which tools exist, then query in parallel (same turn):
    - **Google Flights** (form only; a `?q=` URL opens the home page without
      searching). Procedure: `references/sources.md` § Google Flights.
 
-   **When to use them:**
-   - **Automatically** when fewer than 2 connectors returned flights (failed,
-     region-locked, or not installed): check Skyscanner, then Google Flights
-     if time allows, so the user always gets at least 2 sources.
-   - **On request**: "vérifie aussi Google Flights / Skyscanner", "compare
-     with Skyscanner", "check the browser too".
-   - Otherwise offer it in one line after the results.
+   **Always check both, without being asked**, on every search, whenever a
+   browser is connected: Skyscanner first (one URL, fast), then Google
+   Flights. Run them right after launching the connector queries. The
+   comparison across sources is part of the answer, not an option.
+   Skip a browser source only if it is blocked (captcha, consent wall,
+   error) or no browser exists, and say which.
 
    Whenever a browser source is not checked, **say why** in the sources line,
    with one of:
    - "Google Flights: not checked (no browser connected)";
-   - "Google Flights: not checked (skipped to answer faster) — want me to
-     check it in the browser?" when a browser exists but you skipped it;
    - "Google Flights: not checked (captcha / consent / error: …)".
    The same wording applies to Skyscanner.
 3. **Web search** only for route facts (airlines, baggage rules, season).
@@ -151,8 +148,9 @@ Check silently which tools exist, then query in parallel (same turn):
    airports (e.g. XNB = a bus terminal, not an airport), bags unknown.
 3. Apply `references/regional-tips.md` (general rules + the route's region):
    peaks, baggage, alternate airports, hub connections.
-4. If the same flight appears on several sources at different prices, keep
-   the cheapest row and note the gap ("also 214 € on Google Flights").
+4. **Match the same flight across sources**: same airline (or operating
+   carrier), same departure time, same stops. These rows feed the
+   comparison table (section 4).
 
 ## 4. Present
 
@@ -193,6 +191,28 @@ condensed table. In particular for lastminute.com `search_flights`:
 
 If two tools impose different headers, use one table per source rather than
 breaking either tool's rules.
+
+### Source comparison (always, when 2+ sources answered)
+
+After the main table, add a short **comparison table** for the flights found
+on at least two sources (up to 5 rows), with the **total for all
+travellers** from each source:
+
+(Example with real totals from a CMN → DXB test, 6 Nov 2026.)
+
+| Flight | lastminute.com | Skyscanner | Google Flights |
+|---|---|---|---|
+| Qatar Airways 13:00 · 1 stop | 1082,40 € | 976 € | — |
+| Royal Air Maroc 01:30 · direct | 1202,21 € | 1 085 € | — |
+
+- Copy each price exactly as that source shows it; "—" when not found.
+- Facts only: no "best deal" wording. One line under it may state the
+  lowest total per flight ("Qatar 13:00: lowest on Skyscanner, 976 €").
+- Browser prices: report the **total for all travellers** (Skyscanner shows
+  per-person and total; Google Flights shows the total for the selected
+  passengers: check the page wording). Never multiply a per-person price
+  yourself if the site gives a total.
+- Give each browser source's results page URL as its link.
 
 ### Transparency on links
 

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.0 — 2026-11-06
+
+### Changed
+- Skyscanner and Google Flights are checked on **every** search when a
+  browser is connected, without being asked.
+- New source-comparison table: the same flights side by side with each
+  source's total price (copied exactly, "—" when not found).
+
 ## 1.5.0 — 2026-11-06
 
 ### Added
