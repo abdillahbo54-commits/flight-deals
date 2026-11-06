@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.7.0 — 2026-11-06
+
+Fixes from a 3-source test (lastminute.com, Skyscanner, Google Flights).
+
+### Fixed
+- Sponsored rows (Skyscanner "Sponsorisé / Publicité") are ignored: they
+  showed another price for the same flight.
+- When the browser tool redacts the Google Flights results URL, the tab is
+  left open and the answer says so; the URL is never rebuilt.
+- The end-of-answer order is now unambiguous: booking call-to-action,
+  re-sort offer, settings line, then one question.
+
+### Added
+- Google Flights procedure: passengers dialog and one-way selection (tested).
+
 ## 1.6.1 — 2026-11-06
 
 ### Changed

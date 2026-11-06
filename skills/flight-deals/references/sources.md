@@ -89,7 +89,11 @@ Do not use them. Fill the form instead:
 8. Read each row: times, airline, duration, airports, stops, price (round
    trip, all passengers, taxes included, **bags not included**).
 9. The results URL (`/travel/flights/search?tfs=…`) is shareable: give it as
-   the Google Flights link.
+   the Google Flights link. Some browser tools redact it (`tfs=REDACTED`):
+   then leave the tab open and say so; never rebuild the URL.
+10. Passengers: open the passengers button, use "+" for adults and for
+    children 2–11 / infants, then the dialog's OK button (tested). Trip
+    type: the "Aller-retour / Round trip" dropdown → "Aller simple / One way".
 
 Ignore the user's "Tracked prices" section and any personal history on the
 page. If a consent screen appears, decline non-essential cookies; if a
@@ -122,6 +126,10 @@ Then:
 3. Each result shows a **per-passenger price** and a **"Total" / "Montant
    total"**: report the **total**, and say it is the total for all travellers.
 4. The results page URL is the link to give the user.
+5. **Skip sponsored rows** ("Sponsorisé", "Publicité par …", "Réservez avec
+   <airline> à partir de"): same flight, different price. Use organic rows.
+6. "Combinaisons de compagnies" / "airline combinations" can mean separate
+   tickets: flag it as a self-transfer risk to check.
 
 If a captcha ("press and hold", "are you a robot") appears, stop: never solve
 it. Report "Skyscanner: not checked (captcha)" and continue.
