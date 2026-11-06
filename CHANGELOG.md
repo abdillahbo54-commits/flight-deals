@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.8.0 — 2026-11-06
+
+Fixes from a round-trip, flexible-dates test (CMN → DXB, ±1 day).
+
+### Fixed
+- No ranking words about a tool's offers anywhere in the answer when that
+  tool forbids it (the summary said "the lowest total I found" about a
+  lastminute.com offer). Facts only; cross-source comparison stays.
+- Browser sources now check the requested dates and the most interesting
+  date combination found by the connectors (it was skipped in the test).
+- Shorter answers: at most 5 rows per table, at most 3 tables; flexible
+  dates show the 5 lowest combinations, full list on request.
+
 ## 1.7.0 — 2026-11-06
 
 Fixes from a 3-source test (lastminute.com, Skyscanner, Google Flights).

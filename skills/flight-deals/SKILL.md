@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill. Queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.7)
+# Flight Deals — find the best flights (v1.8)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -109,6 +109,12 @@ Check silently which tools exist, then query in parallel (same turn):
    Skip a browser source only if it is blocked (captcha, consent wall,
    error) or no browser exists, and say which.
 
+   **Which dates to check in the browser** (flexible dates): the dates the
+   user asked for **and** the most interesting date combination the
+   connectors found (lowest total, or the only direct option), if
+   different. At most these 2 date combinations per browser source, to keep
+   the search fast. State which dates each source covered.
+
    Whenever a browser source is not checked, **say why** in the sources line,
    with one of:
    - "Google Flights: not checked (no browser connected)";
@@ -146,6 +152,10 @@ Check silently which tools exist, then query in parallel (same turn):
    write "cheapest / best" for its rows. Give **facts** instead: which rows
    are direct, total durations, long or overnight layovers, odd arrival
    airports (e.g. XNB = a bus terminal, not an airport), bags unknown.
+   This applies **everywhere in the answer**, including the opening summary:
+   write "only direct round trip found, 1849,86 €", never "the lowest total
+   I found" about that tool's offers. Comparing the same flight across
+   sources (section 4, comparison table) is a fact and stays allowed.
 3. Apply `references/regional-tips.md` (general rules + the route's region):
    peaks, baggage, alternate airports, hub connections.
 4. **Match the same flight across sources**: same airline (or operating
@@ -154,7 +164,12 @@ Check silently which tools exist, then query in parallel (same turn):
 
 ## 4. Present
 
-**Compact first**: one table, **top 5 rows** after grouping, then one line
+**Compact first**: **at most 5 rows per table** and at most 3 tables (main
+results, flexible dates, source comparison). For flexible dates, show the 5
+date combinations with the lowest total; the rest only on request ("full
+list"). If a tool requires showing every row it returns, ask it for fewer
+rows (one call per date combination with 1 result each, then keep 5).
+Then one line
 per pick (cheapest / fastest / best balance, with the reason) or the factual
 notes when a tool forbids picks, the search time, and "fares move quickly".
 
