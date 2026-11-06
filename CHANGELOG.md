@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.5.0 — 2026-11-06
+
+### Added
+- Skyscanner as a browser source, with a tested direct-URL procedure
+  (route, date, travellers and ages, cabin, stop filter). Reports the total
+  price for all travellers.
+- Automatic browser check (Skyscanner, then Google Flights) when fewer than
+  2 connectors return flights, e.g. when Expedia is region-locked.
+- Trigger phrases: "vérifie aussi Google Flights / Skyscanner".
+
 ## 1.4.0 — 2026-11-06
 
 ### Changed

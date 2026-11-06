@@ -122,9 +122,10 @@ toujours le total pour tous les voyageurs.
 1. **Mode rapide.** Par défaut : 1 adulte, économie, aller-retour, ±3 jours,
    codes ville (PAR, LON, NYC…) pour couvrir tous les aéroports.
 2. **Recherche.** Tous les connecteurs de vols disponibles, en parallèle
-   (lastminute.com, eDreams, Expedia, SlickTrip…). Google Flights dans le
-   navigateur est **optionnel** (il faut un outil navigateur comme Claude in
-   Chrome).
+   (lastminute.com, eDreams, Expedia, SlickTrip…). Avec un outil navigateur
+   (comme Claude in Chrome), il consulte aussi **Skyscanner** et **Google
+   Flights**, automatiquement si moins de 2 connecteurs répondent, ou à la
+   demande (« vérifie aussi Skyscanner »).
 3. **Robuste.** Une seule relance par source, puis l'échec est signalé en une
    ligne et la recherche continue. Jamais de contournement de connexion, de
    captcha ou de protection.

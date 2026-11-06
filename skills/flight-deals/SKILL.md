@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Searches every available flight connector, optionally Google Flights in the browser, groups duplicate fares, shows a compact top-5 table, never invents a price and never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.4)
+# Flight Deals — find the best flights (v1.5)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -95,15 +95,28 @@ Check silently which tools exist, then query in parallel (same turn):
    **Ask each tool for 5 results** (`max_results=5`, `limit=5`…): some tools
    require showing every row they return, so asking for 5 keeps the table
    compact without breaking their rules. More rows only on request.
-2. **Google Flights in the browser — optional.** Only if a browser tool
-   (Claude in Chrome or equivalent) is connected. Fill the form; never rely
-   on a `?q=` URL (it opens the home page without searching). Procedure:
-   `references/sources.md` § Google Flights. Whenever Google Flights is not
-   checked, **say why** in the sources line, with one of:
+2. **Browser sources** — only if a browser tool (Claude in Chrome or
+   equivalent) is connected:
+   - **Skyscanner** (fast: one URL, no form). Procedure:
+     `references/sources.md` § Skyscanner.
+   - **Google Flights** (form only; a `?q=` URL opens the home page without
+     searching). Procedure: `references/sources.md` § Google Flights.
+
+   **When to use them:**
+   - **Automatically** when fewer than 2 connectors returned flights (failed,
+     region-locked, or not installed): check Skyscanner, then Google Flights
+     if time allows, so the user always gets at least 2 sources.
+   - **On request**: "vérifie aussi Google Flights / Skyscanner", "compare
+     with Skyscanner", "check the browser too".
+   - Otherwise offer it in one line after the results.
+
+   Whenever a browser source is not checked, **say why** in the sources line,
+   with one of:
    - "Google Flights: not checked (no browser connected)";
    - "Google Flights: not checked (skipped to answer faster) — want me to
      check it in the browser?" when a browser exists but you skipped it;
    - "Google Flights: not checked (captcha / consent / error: …)".
+   The same wording applies to Skyscanner.
 3. **Web search** only for route facts (airlines, baggage rules, season).
    Never take prices from snippets.
 

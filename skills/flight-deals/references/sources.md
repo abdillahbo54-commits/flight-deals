@@ -10,7 +10,7 @@ Flight Deals uses whatever is available. Order of preference: connected tools
 | lastminute.com | Connector (`search_flights`, hotels, packages) | ✅ | ✅ | Display rules: exact price, `table_headers`, unmodified deeplink, neutral table, offer `ranking_best=True` re-sort |
 | eDreams | Connector (`search_flights`, `search_hotels`) | ✅ | ✅ | Strong on European routes; check final price with fees |
 | SlickTrip | Connector (flight lookup, booking options, price-drop alerts) | ✅ | ✅ | Account/login required; best for alerts and seat info |
-| Skyscanner | Browser (public search pages) | ✅ | ✅ | Cheapest-month view, "everywhere" search; may show captchas |
+| Skyscanner | Browser (direct URL, tested Nov 2026) | ✅ | ✅ | Fastest browser source: one URL with route, date, travellers, stops (see section H). Shows per-person and total prices; may show a captcha |
 | Trip.com | Browser (public search pages) | ✅ | ✅ | Good on Asia routes and long-haul combos; check bag rules |
 | Agoda | Browser (public search pages) | ➖ | ✅ | Hotel focus (strong in Asia); use for hotel/package price checks |
 | Expedia | Connector (`search_flights`, `search_hotels`) | ✅ | ✅ | Region-locked in some countries (seen from Morocco: `GEOFENCING_ERROR`, also `LOCATION_REQUIRED`): report as unavailable from the user's region, no retry. "Unknown error" = connection expired: retry once, then report |
@@ -94,3 +94,34 @@ Do not use them. Fill the form instead:
 Ignore the user's "Tracked prices" section and any personal history on the
 page. If a consent screen appears, decline non-essential cookies; if a
 captcha or login wall appears, stop and report.
+
+## H. Skyscanner — browser procedure (tested Nov 2026)
+
+Unlike Google Flights, Skyscanner accepts the search directly in the URL:
+
+```
+https://www.skyscanner.fr/transport/vols/<from>/<to>/<YYMMDD>/[<YYMMDD return>/]?adultsv2=<n>&childrenv2=<age>|<age>&cabinclass=economy&rtn=<0|1>[&stops=…]
+```
+
+- `<from>` / `<to>`: lowercase IATA codes. Skyscanner's own city codes
+  cover all airports (e.g. `dxba` = Dubai all airports, `pari` = Paris all,
+  `lond` = London all). If unsure, use the main airport code (`cdg`, `dxb`).
+- Dates: `YYMMDD` (18 Dec 2026 = `261218`). Return date as a second path
+  segment, with `rtn=1`. One way: one date, `rtn=0`.
+- `adultsv2=2`; `childrenv2=9` or `childrenv2=5|9` for several children
+  (ages, pipe-separated; infants are age 0 or 1).
+- `cabinclass=economy|premiumeconomy|business|first`.
+- Stops: `stops=!oneStop,!twoPlusStops` = direct only;
+  `stops=!twoPlusStops` = max 1 stop (tested). Omit for any.
+- Use the site for the user's language (`skyscanner.fr`, `.net`, `.es`…).
+
+Then:
+1. Open the URL, wait 6–8 s, read the page text.
+2. If it still says "Loading results… (n of m providers)", wait a few more
+   seconds and read again, so the cheapest offers are in.
+3. Each result shows a **per-passenger price** and a **"Total" / "Montant
+   total"**: report the **total**, and say it is the total for all travellers.
+4. The results page URL is the link to give the user.
+
+If a captcha ("press and hold", "are you a robot") appears, stop: never solve
+it. Report "Skyscanner: not checked (captcha)" and continue.

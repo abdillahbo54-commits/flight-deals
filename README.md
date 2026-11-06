@@ -119,8 +119,10 @@ for all travellers.
 1. **Quick mode.** Defaults: 1 adult, economy, round trip, ±3 days, city
    codes (PAR, LON, NYC…) to cover every airport.
 2. **Search.** Every flight connector available to the agent, in parallel
-   (lastminute.com, eDreams, Expedia, SlickTrip…). Google Flights in the
-   browser is **optional** (needs a browser tool such as Claude in Chrome).
+   (lastminute.com, eDreams, Expedia, SlickTrip…). With a browser tool (e.g.
+   Claude in Chrome) it also checks **Skyscanner** and **Google Flights**,
+   automatically when fewer than 2 connectors answer, or when you ask
+   ("check Skyscanner too").
 3. **Robust.** One retry per source, then it reports the failure in one line
    and continues. It never bypasses logins, captchas or site protections.
 4. **Group and rank.** Duplicate fares merged, cheapest / fastest / best
