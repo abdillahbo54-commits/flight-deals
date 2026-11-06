@@ -1,6 +1,7 @@
 # ✈️ Flight Deals
 
 **Type your trip. Get the best flights. No setup.**
+
 An agent skill for Claude (and any agent that reads `SKILL.md`) that finds
 the best flight offers, compares the real total price, and **never invents a
 price**.
@@ -27,7 +28,9 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 > | Royal Air Maroc | CMN–CDG | 01:55 · 07:10 | 3h05 | direct | 307 € |
 >
 > **Cheapest:** Transavia 196 € (checked bag not included in the price shown).
+>
 > **Best balance:** Air France 268 €, direct, three departure times.
+>
 > Fares move quickly. Need a checked bag?
 
 *Real search from the author's test run; prices change, your results will

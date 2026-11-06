@@ -1,6 +1,7 @@
 # ✈️ Flight Deals
 
 **Écrivez votre trajet. Obtenez les meilleurs vols. Sans configuration.**
+
 Un skill pour Claude (et tout agent qui lit le format `SKILL.md`) qui trouve
 les meilleures offres de vols, compare le vrai prix total et **n'invente
 jamais un prix**.
@@ -28,7 +29,9 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 > | Royal Air Maroc | CMN–CDG | 01:55 · 07:10 | 3 h 05 | direct | 307 € |
 >
 > **Le moins cher :** Transavia 196 € (bagage en soute non inclus dans ce prix).
+>
 > **Meilleur équilibre :** Air France 268 €, direct, trois horaires.
+>
 > Les prix bougent vite. Besoin d'un bagage en soute ?
 
 *Recherche réelle faite lors du test ; les prix changent, vos résultats
