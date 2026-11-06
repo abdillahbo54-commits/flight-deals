@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.4.0 — 2026-11-06
+
+### Changed
+- When Google Flights is not checked, the answer says why (no browser,
+  skipped, captcha / error) and offers to check it when a browser exists.
+- Region-locked tools (`GEOFENCING_ERROR`) are reported as unavailable from
+  the user's region, not as an outage, and are not retried.
+- `sources.md`: Expedia can be region-locked (seen from Morocco).
+
 ## 1.3.0 — 2026-11-06
 
 Fixes from a real test (CMN → DXB, one way, 2 adults + 1 child, max 1 stop).

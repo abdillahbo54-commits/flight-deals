@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Searches every available flight connector, optionally Google Flights in the browser, groups duplicate fares, shows a compact top-5 table, never invents a price and never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.3)
+# Flight Deals — find the best flights (v1.4)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -98,8 +98,12 @@ Check silently which tools exist, then query in parallel (same turn):
 2. **Google Flights in the browser — optional.** Only if a browser tool
    (Claude in Chrome or equivalent) is connected. Fill the form; never rely
    on a `?q=` URL (it opens the home page without searching). Procedure:
-   `references/sources.md` § Google Flights. If no browser is available,
-   skip it and say "Google Flights not checked (no browser)".
+   `references/sources.md` § Google Flights. Whenever Google Flights is not
+   checked, **say why** in the sources line, with one of:
+   - "Google Flights: not checked (no browser connected)";
+   - "Google Flights: not checked (skipped to answer faster) — want me to
+     check it in the browser?" when a browser exists but you skipped it;
+   - "Google Flights: not checked (captcha / consent / error: …)".
 3. **Web search** only for route facts (airlines, baggage rules, season).
    Never take prices from snippets.
 
@@ -111,6 +115,9 @@ Check silently which tools exist, then query in parallel (same turn):
   (country block, outage…) the error does not state. If the error says what
   is missing (e.g. the user's location), mention it once so the user can
   provide it; never invent the value.
+- **Region-locked tools** (e.g. `GEOFENCING_ERROR`, "not available for your
+  location"): do not retry. Say it is unavailable **from the user's region,
+  not a temporary outage**, and continue with the other sources.
 - Login wall, captcha, bot check or consent wall you cannot decline: stop on
   that source, say so, move on. **Never bypass** connections, captchas or
   site protections, and never ask the user for passwords.

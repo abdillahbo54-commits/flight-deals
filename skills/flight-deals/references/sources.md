@@ -13,7 +13,7 @@ Flight Deals uses whatever is available. Order of preference: connected tools
 | Skyscanner | Browser (public search pages) | ✅ | ✅ | Cheapest-month view, "everywhere" search; may show captchas |
 | Trip.com | Browser (public search pages) | ✅ | ✅ | Good on Asia routes and long-haul combos; check bag rules |
 | Agoda | Browser (public search pages) | ➖ | ✅ | Hotel focus (strong in Asia); use for hotel/package price checks |
-| Expedia | Connector (`search_flights`, `search_hotels`) | ✅ | ✅ | May return "Unknown error" when the connection expired: retry once, then report and skip |
+| Expedia | Connector (`search_flights`, `search_hotels`) | ✅ | ✅ | Region-locked in some countries (seen from Morocco: `GEOFENCING_ERROR`, also `LOCATION_REQUIRED`): report as unavailable from the user's region, no retry. "Unknown error" = connection expired: retry once, then report |
 | Google Flights | Browser (optional, form only) | ✅ | ➖ | Reference price, price calendar; fill the form, `?q=` URLs do not search (see section G) |
 | Kayak / Momondo | Browser | ✅ | ✅ | Cross-check, flexible dates |
 | Booking.com, Trivago | Connector (hotels) | ➖ | ✅ | Same-dates hotel comparison |
