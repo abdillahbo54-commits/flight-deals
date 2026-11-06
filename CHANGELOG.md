@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.3.0 — 2026-11-06
+
+Fixes from a real test (CMN → DXB, one way, 2 adults + 1 child, max 1 stop).
+
+### Fixed
+- Tables stay compact: each tool is asked for 5 results, because some tools
+  require every returned row to be shown (the test showed 15 rows).
+- The tool's mandatory "re-sort by recommended" offer is always included.
+- Failed sources are reported with the tool's own error text; no guessed
+  cause (the test said "blocked from Morocco" for a `LOCATION_REQUIRED` error).
+- Every answer ends with one clarifying question (usually the checked bag).
+
+### Changed
+- When a tool forbids rankings, the skill gives factual notes (direct
+  flights, durations, overnight layovers, odd arrival airports) instead of
+  "cheapest / best" picks.
+
 ## 1.2.0 — 2026-11-06
 
 ### Added
