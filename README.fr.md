@@ -89,6 +89,27 @@ Sur claude.ai : zippez le dossier `skills/flight-deals` et importez-le dans
 - « Préviens-moi si Paris → Bangkok passe sous 500 € »
 - « Vol + hôtel 5 nuits à Istanbul en juin »
 
+## Voyageurs, aller simple, dates…
+
+Écrivez-le simplement dans votre phrase, dans n'importe quel ordre. Ce que
+vous ne précisez pas prend la valeur par défaut.
+
+| Vous voulez | Écrivez par exemple | Par défaut |
+|---|---|---|
+| Voyageurs | « 2 adultes », « à deux », « 2 adultes + 1 enfant (6 ans) », « avec un bébé » | 1 adulte |
+| Type de trajet | « aller simple » / « aller-retour » | aller-retour |
+| Dates | « en décembre » (souple ±3 jours) ou « du 18 au 28 décembre » (exactes) | souples |
+| Bagage | « avec une valise de 23 kg », « bagage en soute » | non inclus |
+| Escales | « direct uniquement », « sans escale » | toutes |
+| Classe | « business », « premium » | économie |
+
+Exemple : *« vol Paris Marrakech aller simple le 12 avril, 2 adultes et 1
+enfant, avec bagage »*.
+
+Un oubli ? Après les résultats, répondez simplement « à deux, aller simple » :
+la recherche est relancée avec les nouveaux réglages. Les prix affichés sont
+toujours le total pour tous les voyageurs.
+
 ## Fonctionnement
 
 1. **Mode rapide.** Par défaut : 1 adulte, économie, aller-retour, ±3 jours,

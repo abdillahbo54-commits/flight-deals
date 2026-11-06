@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Searches every available flight connector, optionally Google Flights in the browser, groups duplicate fares, shows a compact top-5 table, never invents a price and never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.0)
+# Flight Deals — find the best flights (v1.1)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -33,6 +33,28 @@ Defaults (state them in one line above the table):
 | Dates | flexible ±3 days around the period; for a month only ("en décembre"), pick a representative 7–10 night window in that month and say so |
 | Currency | the user's currency if known, else the tool's default |
 | Codes | **city code** when the city has several airports (PAR, LON, NYC…), see `references/iata-codes.md` |
+
+### Read the trip details from the message
+
+Anything the user writes overrides a default. Read it in any language and
+any order, for example:
+
+| The user writes | Meaning |
+|---|---|
+| "2 adultes", "2 adults", "à deux", "en couple" | 2 adults |
+| "avec 2 enfants (5 et 9 ans)", "2 kids" | + 2 children (ages matter: ask only if a tool requires them) |
+| "avec un bébé", "infant" | + 1 infant on lap |
+| "en famille" | unclear count: search 2 adults, say so, and ask the count after the results |
+| "aller simple", "one way", "sans retour" | one way |
+| "aller-retour", "return" | round trip |
+| "du 18 au 28 décembre", "18/12 → 28/12" | exact dates, no ±3 days |
+| "retour depuis Marrakech", "open jaw" | open-jaw (return from another city) |
+| "business", "premium" | cabin |
+| "avec bagage", "23 kg", "valise en soute" | checked bag needed: add bag cost to the total |
+| "direct", "sans escale" | non-stop only |
+
+Prices are always the **total for all passengers**: say "total for 2
+adults" in the header line.
 
 After the results, ask **at most one** clarifying question, the one most
 likely to change the ranking (usually: "Exact dates, or a checked bag?").
@@ -82,8 +104,14 @@ Check silently which tools exist, then query in parallel (same turn):
 
 **Compact first**: one table, **top 5 rows** after grouping, then one line
 per pick (cheapest / fastest / best balance, with the reason), the search
-time, and "fares move quickly". Then offer the detail:
-"Want the full list, other dates, or a re-sort by recommended?"
+time, and "fares move quickly". Then add one short **settings line** so a beginner knows what can
+be changed, in the user's language, e.g.:
+
+> Change: travellers (e.g. "2 adults + 1 child") · one way · exact dates ·
+> checked bag · direct only · full list
+
+The user can answer in plain words ("à deux, aller simple"): re-run the
+search with the new settings, no further questions.
 
 Columns: airline · route (airports) · times · duration · stops · price ·
 source · link.

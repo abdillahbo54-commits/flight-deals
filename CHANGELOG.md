@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 — 2026-11-06
+
+### Added
+- Travellers, one way, exact dates, bag, direct-only and cabin are read from
+  the user's sentence (any language, any order); table in `SKILL.md`.
+- A short settings line under the results so beginners see what they can
+  change ("2 adults + 1 child · one way · exact dates · bag…"); a plain-words
+  reply re-runs the search.
+- README section "Travellers, one way, dates…" (EN and FR).
+
 ## 1.0.0 — 2026-11-06
 
 First public release (renamed from the internal draft "searchfly").

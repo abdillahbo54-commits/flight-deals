@@ -86,6 +86,27 @@ On claude.ai: zip the `skills/flight-deals` folder and upload it in
 - "Alert me if Paris → Bangkok drops under 500 €"
 - "Flight + hotel for 5 nights in Istanbul in June"
 
+## Travellers, one way, dates…
+
+Just write it in your sentence, in any order and any language. Anything you
+don't say uses the default.
+
+| You want | Write for example | Default |
+|---|---|---|
+| Travellers | "2 adults", "à deux", "2 adults + 1 child (6)", "with a baby" | 1 adult |
+| Trip type | "one way", "aller simple" / "round trip" | round trip |
+| Dates | "in December" (flexible ±3 days) or "18 to 28 December" (exact) | flexible |
+| Baggage | "with a 23 kg bag", "valise en soute" | not included |
+| Stops | "direct only", "sans escale" | any |
+| Cabin | "business", "premium economy" | economy |
+
+Example: *"vol Paris Marrakech aller simple le 12 avril, 2 adultes et 1
+enfant, avec bagage"*.
+
+Forgot something? After the results, just reply "à deux, aller simple": the
+search runs again with the new settings. Prices shown are always the total
+for all travellers.
+
 ## How it works
 
 1. **Quick mode.** Defaults: 1 adult, economy, round trip, ±3 days, city
