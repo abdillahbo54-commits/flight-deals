@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Searches every available flight connector, optionally Google Flights in the browser, groups duplicate fares, shows a compact top-5 table, never invents a price and never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.2)
+# Flight Deals — find the best flights (v1.3)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -92,6 +92,9 @@ Check silently which tools exist, then query in parallel (same turn):
 
 1. **Every connected flight tool** (names like `search_flights`,
    `flight_lookup`, `booking_options`). One query per source; use city codes.
+   **Ask each tool for 5 results** (`max_results=5`, `limit=5`…): some tools
+   require showing every row they return, so asking for 5 keeps the table
+   compact without breaking their rules. More rows only on request.
 2. **Google Flights in the browser — optional.** Only if a browser tool
    (Claude in Chrome or equivalent) is connected. Fill the form; never rely
    on a `?q=` URL (it opens the home page without searching). Procedure:
@@ -103,8 +106,11 @@ Check silently which tools exist, then query in parallel (same turn):
 ### Robustness
 
 - Each source gets **one retry** on error (same query). If it fails again,
-  write one line ("Expedia: unavailable — Unknown error, connector may need
-  reconnecting") and continue with the others.
+  write one line with the **tool's own error text**, quoted, and continue:
+  "Expedia: not checked (error `LOCATION_REQUIRED`)". Do not guess a cause
+  (country block, outage…) the error does not state. If the error says what
+  is missing (e.g. the user's location), mention it once so the user can
+  provide it; never invent the value.
 - Login wall, captcha, bot check or consent wall you cannot decline: stop on
   that source, say so, move on. **Never bypass** connections, captchas or
   site protections, and never ask the user for passwords.
@@ -119,6 +125,10 @@ Check silently which tools exist, then query in parallel (same turn):
    21:05") and keep the link of one of them (say which time it books).
 2. Rank by total price for all passengers, then flag cheapest, fastest,
    best balance (see checklist for bags, layovers, risk).
+   **If a tool forbids rankings or opinions** (lastminute.com does), do not
+   write "cheapest / best" for its rows. Give **facts** instead: which rows
+   are direct, total durations, long or overnight layovers, odd arrival
+   airports (e.g. XNB = a bus terminal, not an airport), bags unknown.
 3. Apply `references/regional-tips.md` (general rules + the route's region):
    peaks, baggage, alternate airports, hub connections.
 4. If the same flight appears on several sources at different prices, keep
@@ -127,8 +137,17 @@ Check silently which tools exist, then query in parallel (same turn):
 ## 4. Present
 
 **Compact first**: one table, **top 5 rows** after grouping, then one line
-per pick (cheapest / fastest / best balance, with the reason), the search
-time, and "fares move quickly". Then add one short **settings line** so a beginner knows what can
+per pick (cheapest / fastest / best balance, with the reason) or the factual
+notes when a tool forbids picks, the search time, and "fares move quickly".
+
+**Close every answer in this order** (do not skip any line):
+1. the tool's booking call-to-action, if it requires one;
+2. the tool's mandatory offer, if any (lastminute.com: "Would you like me to
+   re-sort by 'recommended' (best overall value)?", in the user's language);
+3. the settings line (below);
+4. **one** clarifying question, the one most likely to change the real
+   price: usually the checked bag ("Checked bag for all 3 travellers?"), or
+   exact dates if the user gave only a month. Then add one short **settings line** so a beginner knows what can
 be changed, in the user's language, e.g.:
 
 > Change: travellers and ages (e.g. "2 adults + 1 child of 6") · one way /
