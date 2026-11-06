@@ -1,6 +1,6 @@
-# ✈️ Flight Deals
+<p align="center"><img src="assets/banner.png" alt="Flight Deals: type your trip, get the best flights, no setup" width="100%"></p>
 
-**Type your trip. Get the best flights. No setup.**
+# Flight Deals
 
 An agent skill for Claude (and any agent that reads `SKILL.md`) that finds
 the best flight offers, compares the real total price, and **never invents a
@@ -13,6 +13,11 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 ```
 
 ## See it in action
+
+<p align="center"><img src="assets/demo.png" alt="Demo: vol Casablanca Paris en décembre returns a top-5 table of real Google Flights results" width="100%"></p>
+
+<details>
+<summary>Same demo as text</summary>
 
 > **You:** vol Casablanca Paris en décembre
 >
@@ -32,6 +37,8 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 > **Best balance:** Air France 268 €, direct, three departure times.
 >
 > Fares move quickly. Need a checked bag?
+
+</details>
 
 *Real search from the author's test run; prices change, your results will
 differ.* Same-price flights that differ only by time are grouped on one line.
@@ -127,6 +134,7 @@ calendar hold.
 ```
 flight-deals/
 ├── README.md / README.fr.md / CHANGELOG.md / LICENSE
+├── assets/                     # banner and demo images
 └── skills/flight-deals/
     ├── SKILL.md
     └── references/

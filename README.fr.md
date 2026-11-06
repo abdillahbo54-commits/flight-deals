@@ -1,4 +1,6 @@
-# ✈️ Flight Deals
+<p align="center"><img src="assets/banner.png" alt="Flight Deals : écrivez votre trajet, obtenez les meilleurs vols" width="100%"></p>
+
+# Flight Deals
 
 **Écrivez votre trajet. Obtenez les meilleurs vols. Sans configuration.**
 
@@ -13,6 +15,11 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 ```
 
 ## Exemple réel
+
+<p align="center"><img src="assets/demo.png" alt="Démo : vol Casablanca Paris en décembre affiche un top 5 de vrais résultats Google Flights" width="100%"></p>
+
+<details>
+<summary>La même démo en texte (français)</summary>
 
 > **Vous :** vol Casablanca Paris en décembre
 >
@@ -33,6 +40,8 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 > **Meilleur équilibre :** Air France 268 €, direct, trois horaires.
 >
 > Les prix bougent vite. Besoin d'un bagage en soute ?
+
+</details>
 
 *Recherche réelle faite lors du test ; les prix changent, vos résultats
 seront différents.* Les vols au même prix qui ne diffèrent que par l'horaire
