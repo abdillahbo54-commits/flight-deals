@@ -1,12 +1,14 @@
-<p align="center"><img src="assets/banner.png" alt="Flight Deals : écrivez votre trajet, obtenez les meilleurs vols" width="100%"></p>
+<p align="center"><img src="assets/banner.png" alt="Flight Deals : plusieurs comparateurs de vols dans un seul skill" width="100%"></p>
 
 # Flight Deals
 
-**Écrivez votre trajet. Obtenez les meilleurs vols. Sans configuration.**
+**Plusieurs comparateurs de vols dans un seul skill.** Un seul message
+interroge lastminute.com, Skyscanner, Google Flights et tous les autres
+outils de vols de votre agent, puis affiche **les mêmes vols côte à côte**
+avec le prix total de chaque site. Fini les cinq onglets ouverts.
 
-Un skill pour Claude (et tout agent qui lit le format `SKILL.md`) qui trouve
-les meilleures offres de vols, compare le vrai prix total et **n'invente
-jamais un prix**.
+Un skill pour Claude (et tout agent qui lit le format `SKILL.md`). Il compare
+le vrai prix total et **n'invente jamais un prix**.
 
 🇬🇧 [Read in English](README.md)
 
@@ -16,10 +18,13 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 
 ## Exemple réel
 
-<p align="center"><img src="assets/demo.png" alt="Démo : vol Casablanca Paris en décembre affiche un top 5 de vrais résultats Google Flights" width="100%"></p>
+<p align="center"><img src="assets/compare.png" alt="Les 5 mêmes vols Casablanca Dubaï comparés sur lastminute.com, Skyscanner et Google Flights, vrais totaux pour 3 voyageurs" width="100%"></p>
+
+*Une phrase, trois comparateurs : le même vol coûtait jusqu'à 137 € de moins
+selon le site (vrais totaux, 6 nov. 2026).*
 
 <details>
-<summary>La même démo en texte (français)</summary>
+<summary>Autre exemple : Casablanca → Paris (texte)</summary>
 
 > **Vous :** vol Casablanca Paris en décembre
 >
@@ -49,7 +54,11 @@ sont regroupés sur une ligne.
 
 ## Pourquoi ce skill
 
-- **Un seul message suffit.** Départ, arrivée et mois → résultats. Au plus
+- **Tous les comparateurs d'un coup.** Connecteurs (lastminute.com,
+  eDreams, Expedia…) plus Skyscanner et Google Flights dans le navigateur,
+  en une seule réponse. Dans notre test, le même vol Qatar Airways coûtait
+  1082,40 € sur lastminute.com et 976 € sur Skyscanner (3 voyageurs,
+  6 nov. 2026).- **Un seul message suffit.** Départ, arrivée et mois → résultats. Au plus
   une question, après avoir montré les vols.
 - **N'invente jamais un prix.** Chaque prix vient d'un vrai outil, avec sa
   source et l'heure de recherche. Aucune source disponible ? Il le dit.

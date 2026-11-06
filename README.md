@@ -1,10 +1,14 @@
-<p align="center"><img src="assets/banner.png" alt="Flight Deals: type your trip, get the best flights, no setup" width="100%"></p>
+<p align="center"><img src="assets/banner.png" alt="Flight Deals: several flight comparators in one skill" width="100%"></p>
 
 # Flight Deals
 
-An agent skill for Claude (and any agent that reads `SKILL.md`) that finds
-the best flight offers, compares the real total price, and **never invents a
-price**.
+**Several flight comparators in one skill.** One message searches
+lastminute.com, Skyscanner, Google Flights and every other flight tool your
+agent has, then shows **the same flights side by side** with each site's
+total price. No more opening five tabs.
+
+An agent skill for Claude (and any agent that reads `SKILL.md`). It compares
+the real total price and **never invents a price**.
 
 🇫🇷 [Lire en français](README.fr.md)
 
@@ -14,10 +18,13 @@ npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
 
 ## See it in action
 
-<p align="center"><img src="assets/demo.png" alt="Demo: vol Casablanca Paris en décembre returns a top-5 table of real Google Flights results" width="100%"></p>
+<p align="center"><img src="assets/compare.png" alt="Same 5 flights Casablanca to Dubai compared on lastminute.com, Skyscanner and Google Flights, real totals for 3 travellers" width="100%"></p>
+
+*One sentence, three comparators: the same flight was up to 137 € cheaper
+depending on the site (real totals, 6 Nov 2026).*
 
 <details>
-<summary>Same demo as text</summary>
+<summary>Another example: Casablanca → Paris (text)</summary>
 
 > **You:** vol Casablanca Paris en décembre
 >
@@ -45,7 +52,10 @@ differ.* Same-price flights that differ only by time are grouped on one line.
 
 ## Why this skill
 
-- **One message is enough.** Origin, destination and month → results. It asks
+- **All comparators at once.** Connectors (lastminute.com, eDreams,
+  Expedia…) plus Skyscanner and Google Flights in the browser, in one
+  answer. In our test, the same Qatar Airways flight cost 1082,40 € on
+  lastminute.com and 976 € on Skyscanner (3 travellers, 6 Nov 2026).- **One message is enough.** Origin, destination and month → results. It asks
   at most one question, after showing the flights.
 - **Never invents a price.** Every price comes from a real tool, with its
   source and search time. No source available? It says so.
@@ -163,7 +173,7 @@ calendar hold.
 ```
 flight-deals/
 ├── README.md / README.fr.md / CHANGELOG.md / LICENSE
-├── assets/                     # banner and demo images
+├── assets/                     # banner, comparison and demo images
 └── skills/flight-deals/
     ├── SKILL.md
     └── references/

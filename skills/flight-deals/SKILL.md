@@ -1,6 +1,6 @@
 ---
 name: flight-deals
-description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Searches every available flight connector, optionally Google Flights in the browser, groups duplicate fares, shows a compact top-5 table, never invents a price and never books without explicit approval.
+description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill: queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
 ---
 
 # Flight Deals — find the best flights (v1.6)
@@ -202,8 +202,8 @@ travellers** from each source:
 
 | Flight | lastminute.com | Skyscanner | Google Flights |
 |---|---|---|---|
-| Qatar Airways 13:00 · 1 stop | 1082,40 € | 976 € | — |
-| Royal Air Maroc 01:30 · direct | 1202,21 € | 1 085 € | — |
+| Qatar Airways 13:00 · 1 stop | 1082,40 € | 976 € | 1 066 € |
+| Royal Air Maroc 01:30 · direct | 1202,21 € | 1 085 € | 1 222 € |
 
 - Copy each price exactly as that source shows it; "—" when not found.
 - Facts only: no "best deal" wording. One line under it may state the

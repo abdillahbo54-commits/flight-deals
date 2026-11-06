@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.6.1 — 2026-11-06
+
+### Changed
+- Positioning: "several flight comparators in one skill" (skill
+  description, READMEs, banner).
+- New README image: the same 5 flights compared on lastminute.com,
+  Skyscanner and Google Flights (real totals, CMN → DXB, 3 travellers).
+
 ## 1.6.0 — 2026-11-06
 
 ### Changed
