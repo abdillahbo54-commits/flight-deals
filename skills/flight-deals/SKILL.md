@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill. Queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.8)
+# Flight Deals — find the best flights (v1.9)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -173,15 +173,29 @@ Then one line
 per pick (cheapest / fastest / best balance, with the reason) or the factual
 notes when a tool forbids picks, the search time, and "fares move quickly".
 
-**Close every answer in this order** (do not skip any line):
-1. the tool's booking call-to-action, if it requires one;
-2. the tool's mandatory offer, if any (lastminute.com: "Would you like me to
+**Answer layout, in this exact order** (nothing after step 7):
+1. one header line (route, dates, travellers, what prices include);
+2. the tables (max 5 rows each, max 3 tables);
+3. the factual notes ("À savoir"), the sources line and the tracking-link
+   notice;
+4. the tool's booking call-to-action, if it requires one;
+5. the tool's mandatory offer, if any (lastminute.com: "Would you like me to
    re-sort by 'recommended' (best overall value)?", in the user's language);
-3. the **settings line**, so a beginner knows what can be changed (format
+6. the **settings line**, so a beginner knows what can be changed (format
    below);
-4. **one** clarifying question, last, the one most likely to change the real
-   price: usually the checked bag ("Checked bag for all 3 travellers?"), or
-   exact dates if the user gave only a month.
+7. **one** clarifying question, last: a single question about a single
+   thing, the one most likely to change the real price (usually the checked
+   bag, or exact dates if the user gave only a month). Never two questions
+   joined by "and" / "et".
+
+**No summary or repeated conclusion** anywhere after the tables: say each
+fact once.
+
+**Several dates from one tool** (flexible dates, calendar confirmation):
+keep the tool's own table and headers. Put a short date line above each small
+table ("**Sam. 19 déc.**"), at most 3 dates; never write the date into the
+tool's cells (e.g. not "Transavia (19 déc.)") and keep the tool's row
+numbers. Other dates go only in the comparison table.
 
 Settings line format, in the user's language:
 

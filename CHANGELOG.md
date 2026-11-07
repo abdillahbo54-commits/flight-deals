@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.9.0 — 2026-11-07
+
+### Fixed
+- Strict answer layout: notes before the booking call-to-action, then the
+  re-sort offer, the settings line and a single question; no repeated
+  summary.
+- One question only, never two joined by "and".
+- Several dates from one tool: a date line above each small table, the
+  tool's cells and row numbers untouched.
+
 ## 1.8.0 — 2026-11-06
 
 Fixes from a round-trip, flexible-dates test (CMN → DXB, ±1 day).
