@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.10.0 — 2026-11-07
+
+### Changed
+- Simpler answers: an "En bref" summary of at most 3 lines comes first
+  (lowest total, fastest or direct, a trap to avoid), then one main table,
+  the tool's own table, at most 3 notes and one sources line.
+- Plain words ("gare routière", "billets séparés", "1 h 30 du matin").
+
 ## 1.9.0 — 2026-11-07
 
 ### Fixed

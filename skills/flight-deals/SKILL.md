@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill. Queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.9)
+# Flight Deals — find the best flights (v1.10)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -169,21 +169,51 @@ results, flexible dates, source comparison). For flexible dates, show the 5
 date combinations with the lowest total; the rest only on request ("full
 list"). If a tool requires showing every row it returns, ask it for fewer
 rows (one call per date combination with 1 result each, then keep 5).
-Then one line
-per pick (cheapest / fastest / best balance, with the reason) or the factual
-notes when a tool forbids picks, the search time, and "fares move quickly".
+The picks (lowest total, fastest or direct, a
+trap to avoid) go in "En bref" at the top, not after the tables. Give the
+search date in the header and "les prix changent vite" once, in the
+sources line.
 
-**Answer layout, in this exact order** (nothing after step 7):
-1. one header line (route, dates, travellers, what prices include);
-2. the tables (max 5 rows each, max 3 tables);
-3. the factual notes ("À savoir"), the sources line and the tracking-link
-   notice;
-4. the tool's booking call-to-action, if it requires one;
-5. the tool's mandatory offer, if any (lastminute.com: "Would you like me to
-   re-sort by 'recommended' (best overall value)?", in the user's language);
-6. the **settings line**, so a beginner knows what can be changed (format
-   below);
-7. **one** clarifying question, last: a single question about a single
+**Answer layout, in this exact order** (nothing after the last step).
+The user must get the essential in 5 seconds: plain words, short lines,
+details after.
+
+1. **Header**, one sentence: route, date(s), travellers, what prices include
+   (bags or not), and the search level (Pro).
+2. **"En bref"**, at most 3 lines, one option per line, in plain words:
+   what it is, the total price with its source (and seller for an agency),
+   the duration, and the one thing to know. Typical lines: the lowest total
+   found, the fastest or direct option, and one option to avoid if there is
+   a trap. Example:
+   - Le moins cher avec valises : Qatar Airways, 983 € (Skyscanner), 17 h 25
+     avec 9 h d'escale à Doha.
+   - Le plus rapide : Royal Air Maroc direct, 1 091 € (agence lol.travel),
+     7 h 45, départ à 1 h 30 du matin.
+   - À éviter : Etihad arrive dans une gare routière, pas à l'aéroport.
+   A tool that forbids rankings (lastminute.com) never gets a superlative
+   label here: if its offer is the lowest, write the facts only
+   ("Qatar Airways, 17 h 25 : 1084,88 € sur lastminute.com").
+3. **One main table** (max 5 rows): the source comparison (same basis), or
+   the only table if one source answered. Pro: when bags matter, add the
+   real-total column or table here, still max 3 tables in total.
+4. **The tool's own table** (e.g. lastminute.com) under a small heading
+   ("Détail lastminute.com"), untouched, as its rules require.
+5. **"À savoir"**: at most 3 short bullets, only what changes the decision.
+   Then **one sources line** ("Sources : lastminute.com, Skyscanner, Kayak,
+   Google Flights · Trip.com non vérifié (0 vol) · Expedia indisponible dans
+   votre région") and the tracking-link notice in one sentence.
+6. The tool's booking call-to-action, if it requires one.
+7. The tool's mandatory offer, if any (lastminute.com: re-sort by
+   "recommandé").
+8. The **settings line**.
+9. **One** question, last.
+
+Plain words: say "gare routière" not "XNB", "1 h 30 du matin" not "01:30"
+when it matters, "billets séparés" not "self-transfer". Never repeat a fact
+already given in "En bref".
+
+
+Question rule (step 9): a single question about a single
    thing, the one most likely to change the real price (usually the checked
    bag, or exact dates if the user gave only a month). Never two questions
    joined by "and" / "et".
