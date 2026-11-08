@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill. Queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.11)
+# Flight Deals — find the best flights (v1.12)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -85,6 +85,19 @@ likely to change the ranking (usually: "Exact dates, or a checked bag?").
 
 If origin or destination is missing, ask for it in one short question; this
 is the only question allowed before searching.
+
+**Vague or empty request** ("trouve-moi un vol", "aide-moi pour mon voyage",
+or the skill called with no trip): do not search. Reply with one short line
+and **3 example prompts to copy**, in the user's language, adapted to what
+they said if anything (their city, month). Pick from:
+   - Simple: "vol pas cher Paris Marrakech le 12 avril, 2 adultes"
+   - Family with bags: "Paris Dubaï le 18 décembre, 2 adultes et un enfant
+     de 9 ans, une valise chacun"
+   - Flexible dates: "vol Bruxelles Tenerife autour du 20 décembre, retour vers
+     le 3 janvier, direct uniquement"
+   - Stops: "New York Rome en mai, 1 escale max, pas d'escale de nuit"
+End with: "Copie un exemple et change les villes et les dates." No other
+question.
 
 ## 2. Search
 

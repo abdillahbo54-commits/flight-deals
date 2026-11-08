@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.12.0 — 2026-11-08
+
+### Added
+- Vague or empty request: the skill replies with 3 example prompts to copy,
+  in the user's language, instead of searching.
+
 ## 1.11.0 — 2026-11-08
 
 ### Fixed
