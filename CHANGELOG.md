@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.11.0 — 2026-11-08
+
+### Fixed
+- The final question comes right after the settings line, with no recap in
+  between.
+- When no browser is connected at the start, the header says so and the
+  answer offers to redo the comparison once it is connected.
+
 ## 1.10.0 — 2026-11-07
 
 ### Changed

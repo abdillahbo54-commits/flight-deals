@@ -3,7 +3,7 @@ name: flight-deals
 description: Find the cheapest and best flights in one exchange, with no setup. Use when the user asks for flights, airfare, cheap flights, plane tickets, cheapest dates, a price comparison, a price alert or a full trip cost, in any language (e.g. "vol pas cher", "billet d'avion", "vol Casablanca Paris en décembre", "cheap flights London to Dubai"). Several flight comparators in one skill. Queries every available flight connector (lastminute.com, eDreams, Expedia…) and, with a browser, Skyscanner and Google Flights, then shows the same flights side by side with each source's total price. Compact top-5 table, never invents a price, never books without explicit approval.
 ---
 
-# Flight Deals — find the best flights (v1.10)
+# Flight Deals — find the best flights (v1.11)
 
 Goal: a beginner types "vol Casablanca Paris en décembre" and gets a clear
 table **in one exchange**. Reliability first: every price comes from a tool,
@@ -179,7 +179,10 @@ The user must get the essential in 5 seconds: plain words, short lines,
 details after.
 
 1. **Header**, one sentence: route, date(s), travellers, what prices include
-   (bags or not), and the search level (Pro).
+   (bags or not), and the search level (Pro). If no browser was connected
+   when the search started, say it here ("navigateur non connecté :
+   comparaison limitée aux connecteurs") and offer once, at the end of the
+   sources line, to redo the comparison when it is connected.
 2. **"En bref"**, at most 3 lines, one option per line, in plain words:
    what it is, the total price with its source (and seller for an agency),
    the duration, and the one thing to know. Typical lines: the lowest total
@@ -206,7 +209,9 @@ details after.
 7. The tool's mandatory offer, if any (lastminute.com: re-sort by
    "recommandé").
 8. The **settings line**.
-9. **One** question, last.
+9. **One** question, last, **right after** the settings line. Nothing in
+   between: no recap, no "En résumé", no repeated price. If you feel the
+   need to sum up, it belongs in "En bref" at the top.
 
 Plain words: say "gare routière" not "XNB", "1 h 30 du matin" not "01:30"
 when it matters, "billets séparés" not "self-transfer". Never repeat a fact
