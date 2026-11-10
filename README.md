@@ -10,7 +10,7 @@ total price. No more opening five tabs.
 An agent skill for Claude (and any agent that reads `SKILL.md`). It compares
 the real total price and **never invents a price**.
 
-🇫🇷 [Lire en français](README.fr.md)
+🇫🇷 [Lire en français](README.fr.md) · ⭐ [Flight Deals Pro on Agensi](https://www.agensi.io/skills/flight-deals-pro) — bags, sellers, cheapest days, group meeting point, EU261
 
 ```bash
 npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
@@ -159,6 +159,24 @@ Tools are detected automatically. See
 
 Price alerts · flight + hotel total · save the shortlist to Sheets / Notion ·
 calendar hold.
+
+## Pro version
+
+[**Flight Deals Pro**](https://www.agensi.io/skills/flight-deals-pro) ($9.99,
+one-time, on Agensi) adds, on top of everything here:
+
+- **Real total with bags** for every traveller, read from the comparators'
+  own bag filters (Skyscanner, Kayak). Missing fees are marked "to check".
+- **Who sells the fare**: agency or airline, with the direct airline price.
+  In our tests the same flight was 1 091 € through an agency and 1 217 € direct.
+- **Kayak and Trip.com** as extra sources, quick or full search chosen
+  automatically.
+- **Cheapest days of a month**, from the Google Flights and Skyscanner price
+  calendars, then confirmed with a full search.
+- **Group meeting point**: the cheapest destination for people leaving from
+  different cities.
+- **Delay and cancellation rights (EU261 / UK261)**: eligibility, amount and
+  a draft claim you send yourself.
 
 ## Safety
 

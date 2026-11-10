@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.12.1 — 2026-11-10
+
+### Changed
+- READMEs: link to Flight Deals Pro on Agensi and a short list of what the
+  Pro version adds. The skill itself is unchanged.
+
 ## 1.12.0 — 2026-11-08
 
 ### Added

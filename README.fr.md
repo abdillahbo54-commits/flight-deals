@@ -10,7 +10,7 @@ avec le prix total de chaque site. Fini les cinq onglets ouverts.
 Un skill pour Claude (et tout agent qui lit le format `SKILL.md`). Il compare
 le vrai prix total et **n'invente jamais un prix**.
 
-🇬🇧 [Read in English](README.md)
+🇬🇧 [Read in English](README.md) · ⭐ [Flight Deals Pro sur Agensi](https://www.agensi.io/skills/flight-deals-pro) — bagages, vendeurs, jours les moins chers, point de rencontre, EU261
 
 ```bash
 npx skills add abdillahbo54-commits/flight-deals --skill flight-deals
@@ -150,6 +150,26 @@ des paramètres de suivi ; le skill le signale et ne les modifie pas.
 
 Alertes de prix · total vol + hôtel · sauvegarde dans Sheets / Notion ·
 réservation provisoire dans l'agenda.
+
+## Version Pro
+
+[**Flight Deals Pro**](https://www.agensi.io/skills/flight-deals-pro)
+(9,99 $, achat unique, sur Agensi) ajoute à tout ce qui est décrit ici :
+
+- **Vrai total avec bagages** pour chaque voyageur, lu dans les filtres
+  bagages des comparateurs (Skyscanner, Kayak). Les frais introuvables sont
+  marqués « à vérifier ».
+- **Qui vend le billet** : agence ou compagnie, avec le prix direct
+  compagnie. Dans nos tests, le même vol valait 1 091 € via une agence et
+  1 217 € en direct.
+- **Kayak et Trip.com** en sources supplémentaires, recherche rapide ou
+  complète choisie automatiquement.
+- **Jours les moins chers du mois**, lus dans les calendriers de prix Google
+  Flights et Skyscanner, puis confirmés par une recherche complète.
+- **Point de rencontre** : la destination la moins chère pour un groupe qui
+  part de plusieurs villes.
+- **Droits en cas de retard ou d'annulation (EU261 / UK261)** : éligibilité,
+  montant et brouillon de réclamation que vous envoyez vous-même.
 
 ## Sécurité
 
